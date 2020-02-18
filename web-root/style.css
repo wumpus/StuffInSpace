@@ -154,7 +154,7 @@ ul {
 #search-results {
   display: none;
   position: absolute;
-  width: 300px;
+  //width: 300px; // shrink to minimum
   background: black;
   color: white;
   border-radius: 5px;
