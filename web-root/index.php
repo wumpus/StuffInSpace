@@ -53,6 +53,7 @@ header('Content-Type: text/html; charset=utf-8');
           <li data-group="O3b">O3b</li>
           <li data-group="PlanetLab">PlanetLab</li>
           <li data-group="Spire">Spire</li>
+          <li data-group="Orbcomm">Orbcomm</li>
           <li data-group="GNSS">GNSS (all countries)</li>
 	  <li data-group="<divider>" class="divider">- Debris and Rocket Bodies</li>
           <li data-group="rocketbodies">All Rocket Bodies</li>

@@ -183,6 +183,7 @@
     groups.O3b = new SatGroup('nameRegex', /O3B /);
     groups.PlanetLab = new SatGroup('nameRegex', /(FLOCK |SKYSAT )/);  // DOVE 2-4 are Am Radio sats
     groups.Spire = new SatGroup('nameRegex', /LEMUR /);
+    groups.Orbcomm = new SatGroup('nameRegex', /ORBCOMM /);
     groups.ChinaASAT = new SatGroup('nameRegex', /FENGYUN 1C /);  // 1999-025
     //groups.ChinaASAT = new SatGroup('intlDes', '1999-025');  // cannot do this because really need a SEARCH
     groups.GNSS = new SatGroup('nameRegex', /(QZS-|IRNSS|NAVSTAR|BEIDOU|GLONASS)/);
