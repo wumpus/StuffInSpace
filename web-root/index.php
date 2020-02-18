@@ -64,7 +64,7 @@ header('Content-Type: text/html; charset=utf-8');
           <!-- <li data-group="GlonassGroup">GLONASS</li>-->
           <!-- <li data-group="GalileoGroup">Galileo</li>-->
           <!-- <li data-group="SpaceXGroup">SpaceX</li>-->
-	  <li data-group="RussianTugs">Russian Tug Stages 1999-</li>
+	  <li data-group="RussianTugs">Russian Tug Stages</li>
 	</ul>
       </div>
      <!-- <div id="menu-color-schemes" class="menu-item">
