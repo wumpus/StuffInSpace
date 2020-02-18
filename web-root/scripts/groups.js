@@ -176,6 +176,7 @@
     groups.FunGroup = new SatGroup('nameRegex', /SYLDA/);
     groups.WestfordNeedlesGroup = new SatGroup('nameRegex', /WESTFORD NEEDLES/);
     groups.SpaceXGroup = new SatGroup('nameRegex', /FALCON [19]/);
+    groups.RussianTugs = new SatGroup('nameRegex', /(BREEZE-|FREGAT |BLOCK D)/);
 
     groups.Starlink = new SatGroup('nameRegex', /STARLINK/);
     groups.OneWeb = new SatGroup('nameRegex', /ONEWEB/);
