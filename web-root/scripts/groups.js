@@ -104,7 +104,7 @@
       if(groupName === '<divider>') {
         ;
       } else if(groupName === '<clear>') {
-			 groups.clearSelect();
+        ;
       } else {
        groups.selectGroup(groups[groupName]);
       }
