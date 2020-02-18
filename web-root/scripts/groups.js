@@ -87,6 +87,18 @@
     });
     
 		$('#groups-display>li').mouseover(function() {
+
+      var groupName = $(this).data('group');
+      if ("maxTouchPoints" in navigator && navigator.maxTouchPoints > 0) { // recommended by Mozilla
+        // note Microsfoft calls this msMaxTouchPoints for Win 8/IE 10.
+	if (groupName != '<divider>') {
+          // treat ipad mouseover as a click, fixing double click problem
+          $(this).click();
+	  // XXX stop propagation? e.stopImmediatePropagation();
+          return false;
+        }
+      }
+
       clicked = false;
       var groupName = $(this).data('group');
       if(groupName === '<divider>') {
@@ -102,7 +114,7 @@
       clicked = true;
       var groupName = $(this).data('group');
       if(groupName === '<divider>') {
-	;
+        clicked = false;
       } else if(groupName === '<clear>') {
         groups.clearSelect();
         $('#menu-groups .menu-title').text('Groups');
