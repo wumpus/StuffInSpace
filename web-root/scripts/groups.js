@@ -211,7 +211,7 @@
     groups.INrocketbodies = new SatGroup('nameRegex', /(PSLV).*R\/B/); // can't find any GSLV upper stages
     groups.SpaceXrocketbodies = new SatGroup('nameRegex', /FALCON.*R\/B/);
     groups.RocketLabrocketbodies = new SatGroup('nameRegex', /ELECTRON.*R\/B/);
-    groups.NKrocketbodies = new SatGroup('nameRegex', /(UHNA).*R\/B/);
+    groups.NKrocketbodies = new SatGroup('nameRegex', /(UNHA).*R\/B/);
     groups.KRrocketbodies = new SatGroup('nameRegex', /KSLV.*R\/B/);
     groups.UKrocketbodies = new SatGroup('nameRegex', /(BLACK ARROW).*R\/B/);
 
