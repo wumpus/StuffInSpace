@@ -185,6 +185,7 @@
     groups.Spire = new SatGroup('nameRegex', /LEMUR /);
     groups.ChinaASAT = new SatGroup('nameRegex', /FENGYUN 1C /);  // 1999-025
     //groups.ChinaASAT = new SatGroup('intlDes', '1999-025');  // cannot do this because really need a SEARCH
+    groups.GNSS = new SatGroup('nameRegex', /(QZS-|IRNSS|NAVSTAR|BEIDOU|GLONASS)/);
 
     groups.rocketbodies = new SatGroup('nameRegex', /R\/B/);
     groups.debris = new SatGroup('nameRegex', /\bDEB\b/);
