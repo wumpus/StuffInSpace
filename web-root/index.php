@@ -46,19 +46,19 @@ header('Content-Type: text/html; charset=utf-8');
         <div class="menu-title">Groups</div>
         <ul id="groups-display" class="dropdown submenu">
           <li data-group="<clear>" class="clear-option">Clear</li>
-	  <li data-group="<divider>" class="divider">Constellations</li>
+	  <li data-group="<divider>" class="divider">-- Constellations</li>
           <li data-group="Starlink">Starlink</li>
           <li data-group="OneWeb">OneWeb</li>
           <li data-group="O3b">O3b</li>
           <li data-group="PlanetLab">PlanetLab</li>
           <li data-group="Spire">Spire</li>
-	  <li data-group="<divider>" class="divider">Debris and Rocket Bodies</li>
+	  <li data-group="<divider>" class="divider">-- Debris and Rocket Bodies</li>
           <li data-group="rocketbodies">All Rocket Bodies</li>
           <li data-group="debris">All Debris</li>
           <li data-group="ChinaASAT">China ASAT Test Debris</li>
           <li data-group="Iridium33DebrisGroup">Iridium 33 Collision Debris</li>
           <li data-group="WestfordNeedlesGroup">Westford Needles</li>
-	  <li data-group="<divider>" class="divider">Other</li>
+	  <li data-group="<divider>" class="divider">-- Other</li>
           <li data-group="GPSGroup">GPS</li>
           <li data-group="IridiumGroup">Iridium</li>
           <li data-group="GlonassGroup">GLONASS</li>
