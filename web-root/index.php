@@ -5,12 +5,12 @@ header('Content-Type: text/html; charset=utf-8');
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Sans" type="text/css">
     <link rel="stylesheet" href="/icomoon.css" type="text/css">
     <link rel="stylesheet" href="/perfect-scrollbar.min.css" type="text/css">
     <link rel="stylesheet" href="/style.css" type="text/css">
     
-    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script src="/scripts/satellite.min.js"></script>
     <script src="/script-loader.php"></script>
     
@@ -28,12 +28,12 @@ header('Content-Type: text/html; charset=utf-8');
     <!-- analytics disabled for host "<?= $_SERVER['HTTP_HOST'] ?>" -->
    <?php } ?>
     
-    <title>Stuff in Space</title>
+    <title>(modified) Stuff in Space</title>
     
   </head>
   <body>
   <div id="no-webgl">
-    Stuff in Space requires <a href="http://caniuse.com/#feat=webgl">WebGL</a> and <a href="http://caniuse.com/#feat=webworkers">Web Worker</a> support. 
+    Stuff in Space requires <a href="https://caniuse.com/#feat=webgl">WebGL</a> and <a href="https://caniuse.com/#feat=webworkers">Web Worker</a> support. 
   </div>
   <div id="canvas-holder">
     <canvas id="canvas"></canvas>
@@ -46,14 +46,25 @@ header('Content-Type: text/html; charset=utf-8');
         <div class="menu-title">Groups</div>
         <ul id="groups-display" class="dropdown submenu">
           <li data-group="<clear>" class="clear-option">Clear</li>
+	  <li data-group="<divider>" class="divider">Constellations</li>
+          <li data-group="Starlink">Starlink</li>
+          <li data-group="OneWeb">OneWeb</li>
+          <li data-group="O3b">O3b</li>
+          <li data-group="PlanetLab">PlanetLab</li>
+          <li data-group="Spire">Spire</li>
+	  <li data-group="<divider>" class="divider">Debris and Rocket Bodies</li>
+          <li data-group="rocketbodies">All Rocket Bodies</li>
+          <li data-group="debris">All Debris</li>
+          <li data-group="ChinaASAT">China ASAT Test Debris</li>
+          <li data-group="Iridium33DebrisGroup">Iridium 33 Collision Debris</li>
+          <li data-group="WestfordNeedlesGroup">Westford Needles</li>
+	  <li data-group="<divider>" class="divider">Other</li>
           <li data-group="GPSGroup">GPS</li>
           <li data-group="IridiumGroup">Iridium</li>
           <li data-group="GlonassGroup">GLONASS</li>
           <li data-group="GalileoGroup">Galileo</li>
-          <li data-group="Iridium33DebrisGroup">Iridium 33 Collision Debris</li>
-          <li data-group="WestfordNeedlesGroup">Westford Needles</li>
           <li data-group="SpaceXGroup">SpaceX</li>
-        </ul>
+	</ul>
       </div>
      <!-- <div id="menu-color-schemes" class="menu-item">
         <div class="menu-title">Color Schemes</div>
@@ -98,7 +109,9 @@ header('Content-Type: text/html; charset=utf-8');
       <div id="menu-about" class="menu-item">
         <div class="menu-title">About</div>
         <div id="about-box" class="menubox submenu">
-          <span class="box-header">Stuff in Space</span>
+          <span class="box-header">(modified) Stuff in Space</span>
+	  <p>constellation.fu.gg is a modified version of <a href="http://stuffin.space">Stuff in Space</a>.</p>
+
           <p>Stuff in Space is a realtime 3D map of objects in Earth orbit, visualized using WebGL.</p>
           
           <p>The website updates daily with orbit data from <a href="http://www.space-track.org">Space-Track.org</a> 

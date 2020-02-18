@@ -89,7 +89,9 @@
 		$('#groups-display>li').mouseover(function() {
       clicked = false;
       var groupName = $(this).data('group');
-      if(groupName === '<clear>') {
+      if(groupName === '<divider>') {
+        ;
+      } else if(groupName === '<clear>') {
 			 groups.clearSelect();
       } else {
        groups.selectGroup(groups[groupName]);
@@ -99,7 +101,9 @@
     $('#groups-display>li').click(function() {
       clicked = true;
       var groupName = $(this).data('group');
-      if(groupName === '<clear>') {
+      if(groupName === '<divider>') {
+	;
+      } else if(groupName === '<clear>') {
         groups.clearSelect();
         $('#menu-groups .menu-title').text('Groups');
         $(this).css('display', 'none');
@@ -160,6 +164,17 @@
     groups.FunGroup = new SatGroup('nameRegex', /SYLDA/);
     groups.WestfordNeedlesGroup = new SatGroup('nameRegex', /WESTFORD NEEDLES/);
     groups.SpaceXGroup = new SatGroup('nameRegex', /FALCON [19]/);
+
+    groups.Starlink = new SatGroup('nameRegex', /STARLINK/);
+    groups.OneWeb = new SatGroup('nameRegex', /ONEWEB/);
+    groups.O3b = new SatGroup('nameRegex', /O3B /);
+    groups.PlanetLab = new SatGroup('nameRegex', /(FLOCK |SKYSAT )/);  // DOVE 2-4 are Am Radio sats
+    groups.Spire = new SatGroup('nameRegex', /LEMUR /);
+    groups.ChinaASAT = new SatGroup('nameRegex', /FENGYUN 1C /);  // 1999-025
+    //groups.ChinaASAT = new SatGroup('intlDes', '1999-025');  // cannot do this because really need a SEARCH
+
+    groups.rocketbodies = new SatGroup('nameRegex', /R\/B/);
+    groups.debris = new SatGroup('nameRegex', /\bDEB\b/);
     
     console.log('groups init: ' + (performance.now() - start) + ' ms');
   };
