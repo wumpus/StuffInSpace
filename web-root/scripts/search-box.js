@@ -45,7 +45,7 @@
     selectSat(-1);
 
     if(str.length === 0) {
-      hideResults();
+      searchBox.hideResults();
       return;
     }
 
