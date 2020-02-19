@@ -49,13 +49,13 @@ header('Content-Type: text/html; charset=utf-8');
 	  <li data-group="<divider>" class="divider">- Constellations</li>
           <li data-group="Starlink">Starlink</li>
           <li data-group="OneWeb">OneWeb</li>
-	  <li data-group="Globalstar">Globalstar</li>
           <li data-group="IridiumGroup">Iridium</li>
+	  <li data-group="Globalstar">Globalstar</li>
           <li data-group="O3b">O3b</li>
+          <li data-group="Orbcomm">Orbcomm</li>
           <li data-group="PlanetLab">PlanetLab</li>
           <li data-group="Spire">Spire</li>
-          <li data-group="Orbcomm">Orbcomm</li>
-          <li data-group="GNSS">GNSS (all countries)</li>
+          <li data-group="GNSS">GNSS [all countries]</li>
 	  <li data-group="<divider>" class="divider">- Debris and Rocket Bodies</li>
 
           <li data-group="RUrocketbodies">RU Rocket Bodies</li>
@@ -64,8 +64,8 @@ header('Content-Type: text/html; charset=utf-8');
           <li data-group="JProcketbodies">JP Rocket Bodies</li>
           <li data-group="CNrocketbodies">CN Rocket Bodies</li>
           <li data-group="INrocketbodies">IN Rocket Bodies</li>
-          <li data-group="SpaceXrocketbodies">SpaceX Rocket Bodies</li>
-          <li data-group="RocketLabrocketbodies">RocketLab Rocket Bodies</li>
+          <li data-group="SpaceXrocketbodies">SpaceX R.Bodies</li>
+          <li data-group="RocketLabrocketbodies">RocketLab R.Bodies</li>
           <li data-group="KRrocketbodies">KR Rocket Bodies</li>
           <li data-group="NKrocketbodies">NK Rocket Bodies</li>
           <li data-group="UKrocketbodies">UK Rocket Bodies</li>

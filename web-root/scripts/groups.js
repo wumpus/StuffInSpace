@@ -208,7 +208,7 @@
     groups.EUrocketbodies = new SatGroup('nameRegex', /(ARIANE|DIAMANT|AVUM).*R\/B/);
     groups.JProcketbodies = new SatGroup('nameRegex', /(H-1|H-2|EPSILON|^M-).*R\/B/);
     groups.CNrocketbodies = new SatGroup('nameRegex', /(CZ-|YZ-).*R\/B/);
-    groups.INrocketbodies = new SatGroup('nameRegex', /(PSLV).*R\/B/); // can't find any GSLV upper stages
+    groups.INrocketbodies = new SatGroup('nameRegex', /(PSLV).*R\/B/); // no GSLV... the paper on GSLV-D5 says they use a really low perigee for GTO
     groups.SpaceXrocketbodies = new SatGroup('nameRegex', /FALCON.*R\/B/);
     groups.RocketLabrocketbodies = new SatGroup('nameRegex', /ELECTRON.*R\/B/);
     groups.NKrocketbodies = new SatGroup('nameRegex', /(UNHA).*R\/B/);
