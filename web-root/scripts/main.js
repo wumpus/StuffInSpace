@@ -250,6 +250,9 @@ $(document).ready(function() {
 });
 
 function selectSat(satId) {
+  if ( satId == null ) {  // will also catch undefined
+    console.log('saw selectSat of', satId);
+  }
   selectedSat = satId;
   if(satId === -1) {
     $('#sat-infobox').fadeOut();
@@ -637,12 +640,12 @@ function updateUrl() {
   var url = '/';
   var paramSlices = [];
 
-  if(selectedSat !== -1){
+  if(selectedSat !== -1) {
     paramSlices.push('intldes=' + satSet.getSat(selectedSat).intlDes);
   }
 
   var currentSearch = searchBox.getCurrentSearch();
-  if(currentSearch != null) {
+  if(currentSearch != null && currentSearch.length) {
     paramSlices.push('search=' + currentSearch);
   }
 
@@ -650,6 +653,7 @@ function updateUrl() {
     url += '?' + paramSlices.join('&');
   }
 
+  // this is intentionally not having the back button do anything
   window.history.replaceState(null, 'Stuff in Space', url);
 }
 

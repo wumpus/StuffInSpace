@@ -64,6 +64,9 @@
   groups.SatGroup = SatGroup;
   
   groups.selectGroup = function(group) {
+    if ( group == null ) {
+      console.log('saw selectGroup of', group);
+    }
     var start = performance.now();
 		groups.selectedGroup = group;
     group.updateOrbits();

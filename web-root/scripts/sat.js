@@ -246,6 +246,9 @@ satSet.draw = function(pMatrix, camMatrix) {
   satSet.getSat = function(i) {
     if(!satData) return null;
     var ret = satData[i];
+    if(!ret) {
+      console.log('getSat problem for index of', i)
+    }
     if(!ret) return null;
     if(gotExtraData) {
       ret.altitude = satAlt[i];
