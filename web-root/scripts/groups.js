@@ -111,13 +111,6 @@
       } else if(groupName === '<clear>') {
         ;
       } else {
-       // put length of group into the text
-       var mouseover_innerHTML = this.innerHTML;
-       if (! mouseover_innerHTML.endsWith(')')) {
-         var group_length = groups[groupName].count();
-	 console.log(groupName, 'length', group_length.toString())
-         this.innerHTML = mouseover_innerHTML + ' (' + group_length + ')';
-       }
        groups.selectGroup(groups[groupName]);
       }
 		});
@@ -218,6 +211,19 @@
     groups.debris = new SatGroup('nameRegex', /\bDEB\b/);
     groups.SpaceXdebris = new SatGroup('nameRegex', /FALCON.*DEB/);
     groups.RocketLabdebris = new SatGroup('nameRegex', /ELECTRON.*DEB/);
+
+    // loop over all #groups-display>li and inject the SatGroup.count() into the html
+    $('#groups-display').children('li').each(function(idx, itm) { 
+      groupName = $(itm).data('group');
+      if ( groupName.startsWith('<') ) {
+        return;
+      }
+      group_length = groups[groupName].count();
+      mouseover_innerHTML = itm.innerHTML;
+      console.log(groupName, mouseover_innerHTML, group_length)
+      itm.innerHTML = mouseover_innerHTML + ' (' + group_length + ')';
+    });
+
     
     console.log('groups init: ' + (performance.now() - start) + ' ms');
   };
