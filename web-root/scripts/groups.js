@@ -130,8 +130,6 @@
         clicked = false;
       } else if(groupName === '<clear>') {
         groups.clearSelect();
-        $('#menu-groups .menu-title').text('Groups');
-        $(this).css('display', 'none');
       } else {
         selectSat(-1); //clear selected sat
         groups.selectGroup(groups[groupName]);
