@@ -212,7 +212,6 @@
     groups.SpaceXdebris = new SatGroup('nameRegex', /FALCON.*DEB/);
     groups.RocketLabdebris = new SatGroup('nameRegex', /ELECTRON.*DEB/);
 
-    // loop over all #groups-display>li and inject the SatGroup.count() into the html
     $('#groups-display').children('li').each(function(idx, itm) { 
       groupName = $(itm).data('group');
       if ( groupName.startsWith('<') ) {
@@ -220,7 +219,6 @@
       }
       group_length = groups[groupName].count();
       mouseover_innerHTML = itm.innerHTML;
-      console.log(groupName, mouseover_innerHTML, group_length)
       itm.innerHTML = mouseover_innerHTML + ' (' + group_length + ')';
     });
 
