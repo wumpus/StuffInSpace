@@ -76,6 +76,11 @@
 	};
   
   groups.clearSelect = function() {
+    $('#menu-groups .menu-title').text('Groups');
+    $('#menu-groups .clear-option').css({
+      display: 'none'
+    });
+
     groups.selectedGroup = null;
     satSet.setColorScheme(ColorScheme.default);
   };
