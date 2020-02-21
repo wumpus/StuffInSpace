@@ -81,6 +81,7 @@ $(document).ready(function() {
   };
   var target = document.getElementById('spinner');
   spinner = new Spinner(opts).spin(target);
+  setLoaderText('Downloading resources...');
 
   $('#search-results').perfectScrollbar();
  
@@ -654,6 +655,6 @@ function updateUrl() {
   window.history.replaceState(null, 'Stuff in Space', url);
 }
 
-
-
-
+function setLoaderText(loaderText) {
+  $('#loader-text').text(loaderText);
+}

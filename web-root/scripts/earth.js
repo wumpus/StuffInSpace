@@ -26,7 +26,7 @@ var loaded = false;
 function onImageLoaded() {
   if (texLoaded && nightLoaded) {
     loaded = true;
-    $('#loader-text').text('Downloading satellites...');
+    setLoaderText('Downloading satellites...');
   }
 }
 

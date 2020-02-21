@@ -188,7 +188,7 @@ header('Content-Type: text/html; charset=utf-8');
       <div id="loader">
         <div id="spinner"></div>
         <div id="loader-text">
-          Downloading resources...
+          Initializing...
         </div>
       </div>
     </div>

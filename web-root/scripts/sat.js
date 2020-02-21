@@ -114,7 +114,7 @@
       
      
       console.log('sat.js downloaded data');
-      $('#loader-text').text('Crunching numbers...');
+      setLoaderText('Crunching numbers...');
       
       satData = resp;
       satSet.satDataString = JSON.stringify(satData);
