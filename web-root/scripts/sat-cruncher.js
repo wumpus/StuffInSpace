@@ -3,7 +3,9 @@ importScripts('/scripts/satellite.min.js');
 
 var satCache = [];
 var satPos, satVel, satAlt;
-
+var propagate_time = 1000;
+var propagate_time_max = 5000;
+var propagate_time_min = 500;
 
 onmessage = function(m) {
   var start = Date.now();
@@ -48,7 +50,7 @@ onmessage = function(m) {
 };
 
 function propagate() {
-//  var start = Date.now();
+  var start = Date.now();
   
   var now = new Date();   
   var j = jday(now.getUTCFullYear(), 
@@ -97,9 +99,17 @@ function propagate() {
   satPos = new Float32Array(satCache.length * 3);
   satVel = new Float32Array(satCache.length * 3);
   satAlt = new Float32Array(satCache.length);
- // console.log('sat-cruncher propagate: ' + (performance.now() - start) + ' ms');
+
+  var elapsed = Date.now() - start;
+  if (elapsed > 200) {
+    propagate_time = Math.min(propagate_time * 1.1, propagate_time_max);
+  } else if (elapsed < 100) {
+    propagate_time = Math.max(propagate_time / 1.1, propagate_time_min);
+  }
+  propagate_time = Math.trunc(propagate_time);
+  //console.log('sat-cruncher propagate: ' + elapsed + ' ms,', 'new time is', propagate_time);
   
-  setTimeout(propagate, 2000);
+  setTimeout(propagate, propagate_time);
 }
 
 function jday(year, mon, day, hr, minute, sec){ //from satellite.js
