@@ -115,6 +115,7 @@ $(document).ready(function() {
     var queryStr = window.location.search.substring(1);
     var params = queryStr.split('&');
     var hash = {};
+    var val;
     for(var i=0; i < params.length; i++){
       hash[params[i].split('=')[0]] = params[i].split('=')[1];
     }
