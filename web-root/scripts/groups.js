@@ -200,7 +200,6 @@
     groups.Iridium33DebrisGroup = new SatGroup('nameRegex', /(COSMOS 2251|IRIDIUM 33) DEB/);
     groups.GlonassGroup = new SatGroup('nameRegex', /GLONASS/);
     groups.GalileoGroup = new SatGroup('nameRegex', /GALILEO/);
-    groups.FunGroup = new SatGroup('nameRegex', /SYLDA/);
     groups.WestfordNeedlesGroup = new SatGroup('nameRegex', /WESTFORD NEEDLES/);
     groups.SpaceXGroup = new SatGroup('nameRegex', /FALCON [19]/);
     groups.RussianTugs = new SatGroup('nameRegex', /(BREEZE-|FREGAT |BLOCK D|^SL-1)/);
@@ -230,7 +229,7 @@
     groups.KRrocketbodies = new SatGroup('nameRegex', /KSLV.*R\/B/);
     groups.UKrocketbodies = new SatGroup('nameRegex', /(BLACK ARROW).*R\/B/);
 
-    groups.debris = new SatGroup('nameRegex', /\bDEB\b/);
+    groups.debris = new SatGroup('nameRegex', /\b(DEB|COOLANT)\b/);
     groups.SpaceXdebris = new SatGroup('nameRegex', /FALCON.*DEB/);
     groups.RocketLabdebris = new SatGroup('nameRegex', /ELECTRON.*DEB/);
 
