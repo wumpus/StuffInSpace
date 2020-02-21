@@ -114,19 +114,22 @@ $(document).ready(function() {
     //do querystring stuff
     var queryStr = window.location.search.substring(1);
     var params = queryStr.split('&');
+    var hash = {};
     for(var i=0; i < params.length; i++){
-      var key = params[i].split('=')[0];
-      var val = params[i].split('=')[1];
-      if(key === 'intldes') {
-        console.log('url snapping to ' + val);
-        var urlSatId = satSet.getIdFromIntlDes(val.toUpperCase());
-        if(urlSatId !== null) {
-          selectSat(urlSatId);
-        }
-      } else if (key === 'search') {
-        console.log('preloading search to ' + val);
-        searchBox.doSearch(val);
-        $('#search').val(val);
+      hash[params[i].split('=')[0]] = params[i].split('=')[1];
+    }
+    if ('search' in hash) {
+      val = hash['search'];
+      console.log('preloading search to ' + val);
+      searchBox.doSearch(val);
+      $('#search').val(val);
+    }
+    if ('intldes' in hash) {
+      val = hash['intldes'];
+      console.log('url snapping to ' + val);
+      var urlSatId = satSet.getIdFromIntlDes(val.toUpperCase());
+      if(urlSatId !== null) {
+        selectSat(urlSatId);
       }
     }
 
