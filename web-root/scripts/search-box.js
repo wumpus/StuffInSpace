@@ -152,6 +152,10 @@
     });
 
     $('#search-results').on('mouseover', '.search-result', function(evt) {
+      if ("maxTouchPoints" in navigator && navigator.maxTouchPoints > 0) {
+        $(this).click();
+        return false;
+      }
       var satId = $(this).data('sat-id');
       orbitDisplay.setHoverOrbit(satId);
       satSet.setHover(satId);

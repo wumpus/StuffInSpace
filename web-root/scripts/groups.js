@@ -120,7 +120,7 @@
 
       var groupName = $(this).data('group');
       if ("maxTouchPoints" in navigator && navigator.maxTouchPoints > 0) { // recommended by Mozilla
-        // note Microsfoft calls this msMaxTouchPoints for Win 8/IE 10.
+        // note Microsfoft calls this msMaxTouchPoints for Win 8/IE 10. but these laptops have both a mouse and a touchscreen.
 	if (groupName != '<divider>') {
           // treat touch mouseover as a click, fixing double click problem
           $(this).click();
