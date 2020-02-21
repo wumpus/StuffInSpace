@@ -17,6 +17,10 @@
     return lastResultGroup;
   };
 
+  searchBox.setLastResultGroup = function(lrg) {
+    lastResultGroup = lrg;
+  };
+
   searchBox.getCurrentSearch = function() {
     if(resultsOpen) {
       return $('#search').val();
@@ -25,6 +29,10 @@
     }
   };
 
+  searchBox.clearSearchBox = function() {
+    $('#search').val('');
+    updateUrl();
+  }
 
   searchBox.isHovering = function() {
     return hovering;
@@ -44,8 +52,12 @@
   searchBox.doSearch = function(str) {
     selectSat(-1);
 
+    $('#search').val(str);  // in case the search was not fired by user input
+
     if(str.length === 0) {
       searchBox.hideResults();
+      lastResultGroup = null;
+      updateUrl();
       return;
     }
 
@@ -86,6 +98,7 @@
     var dispGroup = new groups.SatGroup('idList', idList);
     lastResultGroup = dispGroup;
     groups.selectGroup(dispGroup);
+    groups.clearSelectMenu();
 
     searchBox.fillResultBox(results, str);
     updateUrl();
@@ -161,11 +174,19 @@
         searchBox.doSearch(searchStr);
     });
 
-    $('#all-objects-link').click(function() {
+    $('#all-objects-link').click(function(ev) {
+      if (selectedSat === -1) {
+        console.log('GREG: saw a selectedSat of -1, so I must ignore this click');
+        return;
+      }
       var intldes = satSet.getSat(selectedSat).intlDes;
       var searchStr = intldes.slice(0,8);
-      searchBox.doSearch(searchStr);
-      $('#search').val(searchStr);
+      var saved_selectedSat = selectedSat;
+      searchBox.doSearch(searchStr); // clears selectedSat and fades out infobox
+      selectSat(saved_selectedSat);
+      // currently this click seems to always happen twice in a row?
+      // you can see the infobox fade out and appear twice
+      ev.stopPropagation(); // does not help
     });
   };
   

@@ -250,9 +250,6 @@ $(document).ready(function() {
 });
 
 function selectSat(satId) {
-  if ( satId == null ) {  // will also catch undefined
-    console.log('saw selectSat of', satId);
-  }
   selectedSat = satId;
   if(satId === -1) {
     $('#sat-infobox').fadeOut();

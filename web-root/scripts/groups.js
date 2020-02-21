@@ -64,9 +64,6 @@
   groups.SatGroup = SatGroup;
   
   groups.selectGroup = function(group) {
-    if ( group == null ) {
-      console.log('saw selectGroup of', group);
-    }
     var start = performance.now();
 		groups.selectedGroup = group;
     group.updateOrbits();
@@ -75,12 +72,29 @@
    // console.log('selectGroup: ' + t + ' ms');
 	};
   
-  groups.clearSelect = function() {
+  groups.setSelectMenu = function(str) {
+    if ( str ) {
+      $('#menu-groups .menu-title').text('Group: ' + str);
+      $('#menu-groups .clear-option').css({
+        display: 'block'
+      });
+    } else {
+      $('#menu-groups .menu-title').text('Groups');
+      $('#menu-groups .clear-option').css({
+        display: 'none'
+      });
+    }
+  };
+
+  groups.clearSelectMenu = function() {
     $('#menu-groups .menu-title').text('Groups');
     $('#menu-groups .clear-option').css({
       display: 'none'
     });
+  };
 
+  groups.clearSelect = function() {
+    //searchBox.hideResults(); // hideResults calls clearSelect
     groups.selectedGroup = null;
     satSet.setColorScheme(ColorScheme.default);
   };
@@ -92,7 +106,10 @@
     $('#groups-display').mouseout(function() {
       if(!clicked) {
         if(searchBox.isResultBoxOpen()) {
-          groups.selectGroup(searchBox.getLastResultGroup());
+          lrg = searchBox.getLastResultGroup();
+	  if ( lrg != null ) {
+            groups.selectGroup(lrg);
+          }
         } else {
           groups.clearSelect();
         }
@@ -107,7 +124,7 @@
 	if (groupName != '<divider>') {
           // treat touch mouseover as a click, fixing double click problem
           $(this).click();
-	  // XXX stop propagation? e.stopImmediatePropagation();
+	  // stop propagation? e.stopImmediatePropagation();
           return false;
         }
       }
@@ -124,24 +141,23 @@
 		});
     
     $('#groups-display>li').click(function() {
-      clicked = true;
       var groupName = $(this).data('group');
       if(groupName === '<divider>') {
-        clicked = false;
+        ;
       } else if(groupName === '<clear>') {
         groups.clearSelect();
+        groups.clearSelectMenu();
       } else {
-        selectSat(-1); //clear selected sat
+        // if I click the group I'm already viewing, should nothing happen? XXX
+        // ok, side-effect, should clear the search even if I click on the same group 
+        clicked = true;
+        selectSat(-1);
+        searchBox.clearSearchBox();
         groups.selectGroup(groups[groupName]);
-
         searchBox.fillResultBox(groups[groupName].sats, '');
-
-        $('#menu-groups .clear-option').css({
-          display: 'block'
-        });
-        $('#menu-groups .menu-title').text('Groups (' + $(this).text() + ')');
+        searchBox.setLastResultGroup(groups[groupName]);
+        groups.setSelectMenu($(this).text())
       }
-      
       $('#groups-display').css({
         display: 'none'
       });
