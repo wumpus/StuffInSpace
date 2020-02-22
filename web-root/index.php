@@ -46,6 +46,10 @@ header('Content-Type: text/html; charset=utf-8');
         <div class="menu-title">Groups</div>
         <ul id="groups-display" class="dropdown submenu">
           <li data-group="<clear>" class="clear-option">Clear</li>
+	  <li data-group="<divider>" class="divider">- Orbitss</li>
+          <li data-group="GSO">GSO</li>
+          <li data-group="GSOinclined">GSO inclined</li>
+          <li data-group="GSOgraveyard">GSO graveyard</li>
 	  <li data-group="<divider>" class="divider">- Constellations</li>
           <li data-group="Starlink">Starlink</li>
           <li data-group="OneWeb">OneWeb</li>

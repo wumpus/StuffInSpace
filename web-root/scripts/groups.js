@@ -33,6 +33,15 @@
           strIndex : 0
         });
       } 
+    } else if (groupType === 'orbitType') {
+      var satIdList = satSet.searchOrbitType(data);
+      for(var i=0; i < satIdList.length; i++) {
+        this.sats.push({
+          satId : satIdList[i],
+          isIntlDes : false,
+          strIndex : 0,
+        });
+      } 
     }
 	}
 	
@@ -233,6 +242,25 @@
     groups.SpaceXdebris = new SatGroup('nameRegex', /FALCON.*DEB/);
     groups.RocketLabdebris = new SatGroup('nameRegex', /ELECTRON.*DEB/);
 
+    groups.initDelayedGroups(false);
+    groups.fixMenuCounts();
+    
+    console.log('groups init: ' + (performance.now() - start) + ' ms');
+  };
+
+  groups.initDelayedGroups = function(ready) {
+    if (!ready) {
+      groups.GSO = new SatGroup();
+      groups.GSOinclined = new SatGroup();
+      groups.GSOgraveyard = new SatGroup();
+    } else {
+      groups.GSO = new SatGroup('orbitType', 'GSO');
+      groups.GSOinclined = new SatGroup('orbitType', 'GSO inclined');
+      groups.GSOgraveyard = new SatGroup('orbitType', 'GSO graveyard');
+    }
+  };
+
+  groups.fixMenuCounts = function() {
     $('#groups-display').children('li').each(function(idx, itm) { 
       groupName = $(itm).data('group');
       if ( groupName.startsWith('<') ) {
@@ -240,12 +268,14 @@
       }
       group_length = groups[groupName].count();
       mouseover_innerHTML = itm.innerHTML;
+      if (mouseover_innerHTML.includes(' (0)')) { // group was empty in a previous call
+        mouseover_innerHTML = mouseover_innerHTML.replace(' (0)', '');
+      }
       itm.innerHTML = mouseover_innerHTML + ' (' + group_length + ')';
     });
-
-    
-    console.log('groups init: ' + (performance.now() - start) + ' ms');
   };
+
+
 	window.groups = groups;
 	
 	

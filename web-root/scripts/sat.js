@@ -69,6 +69,10 @@
       
       console.log('sat.js copied extra data in ' + (performance.now() - start) + ' ms');
       gotExtraData = true;
+
+      groups.initDelayedGroups(true);
+      groups.fixMenuCounts();
+
       return;
     }
      
@@ -299,6 +303,17 @@ satSet.draw = function(pMatrix, camMatrix) {
     var res = [];
     for(var i=0; i<satData.length; i++) {
       if(regex.test(satData[i].OBJECT_NAME)) {
+        res.push(i);
+      }
+    }
+    return res;
+  };
+  
+  
+  satSet.searchOrbitType = function(ot) {
+    var res = [];
+    for(var i=0; i<satData.length; i++) {
+      if(classifyOrbit(satData[i]) == ot) {
         res.push(i);
       }
     }
