@@ -47,6 +47,7 @@
     sr.slideUp();
     groups.clearSelect();
     resultsOpen = false;
+    searchBox.clearSearchBox();
   };
 
   searchBox.doSearch = function(str) {
