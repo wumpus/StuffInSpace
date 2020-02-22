@@ -313,7 +313,7 @@ satSet.draw = function(pMatrix, camMatrix) {
   satSet.searchOrbitType = function(ot) {
     var res = [];
     for(var i=0; i<satData.length; i++) {
-      if(classifyOrbit(satData[i]) == ot) {
+      if(classifyOrbit(satData[i], ot) == ot) {
         res.push(i);
       }
     }

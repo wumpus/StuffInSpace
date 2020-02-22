@@ -255,6 +255,9 @@
       groups.GSOgraveyard = new SatGroup();
       groups.Molniya = new SatGroup();
       groups.QuasiZenith = new SatGroup();
+      groups.Cluster775 = new SatGroup();
+      groups.Cluster850 = new SatGroup();
+      groups.Cluster975 = new SatGroup();
       groups.SSOish = new SatGroup();
     } else {
       groups.GSO = new SatGroup('orbitType', 'GSO');
@@ -262,6 +265,9 @@
       groups.GSOgraveyard = new SatGroup('orbitType', 'GSO graveyard');
       groups.Molniya = new SatGroup('orbitType', 'Molniya');
       groups.QuasiZenith = new SatGroup('orbitType', 'Quasi-Zenith');
+      groups.Cluster775 = new SatGroup('orbitType', 'Cluster 775km');
+      groups.Cluster850 = new SatGroup('orbitType', 'Cluster 850km');
+      groups.Cluster975 = new SatGroup('orbitType', 'Cluster 975km');
       groups.SSOish = new SatGroup('orbitType', 'SSO-ish');
     }
   };

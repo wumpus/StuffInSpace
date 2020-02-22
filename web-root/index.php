@@ -53,6 +53,9 @@ header('Content-Type: text/html; charset=utf-8');
           <li data-group="Molniya">Molniya</li>
           <li data-group="QuasiZenith">Quasi-Zenith</li>
 	  <li data-group="SSOish">SSO-ish</li>
+	  <li data-group="Cluster775">Cluster at 775km</li>
+	  <li data-group="Cluster850">Cluster at 850km</li>
+	  <li data-group="Cluster975">Cluster at 975km</li>
 	  <li data-group="<divider>" class="divider">- Constellations</li>
           <li data-group="Starlink">Starlink</li>
           <li data-group="OneWeb">OneWeb</li>

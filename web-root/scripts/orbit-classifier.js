@@ -34,20 +34,25 @@ var orbits = [
     altitude: [240., 1289.],  // 282 ... 1269
     inclination: [94.6, 102.7],  // 96.6 ... 100.7
   },
+  // https://amostech.com/TechnicalPapers/2019/Orbital-Debris/McKnight.pdf
   {
-    name: '',
-    altitude: [0., 0.],
-    inclination: [0., 0.],
+    name: 'Cluster 775km',  // 101 objects of 1,000kg ... I see 311
+    altitude: [755., 795.],  // span 40
+    //inclination: [0., 0.],  // a few not polar?
   },
   {
-    name: '',
-    altitude: [0., 0.],
-    inclination: [0., 0.],
+    name: 'Cluster 850km',  // 75 objects of 2,700kg  ... I see 267 including Fengyun 1C DEB, NOAA 16 DEB, DMSP DEB
+    altitude: [827., 873.],  // span 45
+    //inclination: [0., 0.],  // looks all polar
+    // example Cosmos 2227, Tselina-2 ELINT... ditto for Cosmos 1697... 130 total of all types but maybe multiple orbits?
+    //  T-2 4 through Cosmos 1750... 8 more through Cosmos 2000... 4 more through Cosmos 2250
   },
   {
-    name: '',
-    altitude: [0., 0.],
-    inclination: [0., 0.],
+    name: 'Cluster 975km',  // 314 objects of 1,000kg ... I see 593
+    altitude: [917., 1033.],  // span 115
+    //inclination: [0., 0.],  // looks all polar
+    // example object: Cosmos 755, a Parus
+    // https://en.wikipedia.org/wiki/Parus_(satellite) -- 99 launched ... 825kg ... 1975-2009?
   },
   {
     name: '',
@@ -76,9 +81,11 @@ function checkValue(inclination, satValue) {
     return true;
 }
 
-function classifyOrbit(sat) {
+function classifyOrbit(sat, wanted) {
   for (var o of orbits) {
     if (o.name == '')
+      continue;
+    if (wanted && o.name != wanted)
       continue;
 
     if ('altitude' in o && !checkAltitude(o.altitude, sat)) {
