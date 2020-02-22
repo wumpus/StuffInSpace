@@ -253,6 +253,7 @@
       groups.GSO = new SatGroup();
       groups.GSOinclined = new SatGroup();
       groups.GSOgraveyard = new SatGroup();
+      groups.GTO = new SatGroup();
       groups.Molniya = new SatGroup();
       groups.QuasiZenith = new SatGroup();
       groups.Cluster775 = new SatGroup();
@@ -263,6 +264,7 @@
       groups.GSO = new SatGroup('orbitType', 'GSO');
       groups.GSOinclined = new SatGroup('orbitType', 'GSO inclined');
       groups.GSOgraveyard = new SatGroup('orbitType', 'GSO graveyard');
+      groups.GTO = new SatGroup('orbitType', 'GTO');
       groups.Molniya = new SatGroup('orbitType', 'Molniya');
       groups.QuasiZenith = new SatGroup('orbitType', 'Quasi-Zenith');
       groups.Cluster775 = new SatGroup('orbitType', 'Cluster 775km');

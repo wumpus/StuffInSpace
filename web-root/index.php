@@ -50,6 +50,7 @@ header('Content-Type: text/html; charset=utf-8');
           <li data-group="GSO">GSO</li>
           <li data-group="GSOinclined">GSO inclined</li>
           <li data-group="GSOgraveyard">GSO graveyard</li>
+          <li data-group="GTO">GTO</li>
           <li data-group="Molniya">Molniya</li>
           <li data-group="QuasiZenith">Quasi-Zenith</li>
 	  <li data-group="SSOish">SSO-ish</li>

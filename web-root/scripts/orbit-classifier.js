@@ -15,6 +15,18 @@ var orbits = [
     inclination: [-15., 15.],
   },
   {
+    name: 'GTO',
+    perigee: [0., 9000.],  // include partly-to-gto (Centaur)
+    apogee: [34000., 70000.],  // supersync
+    inclination: [-60., 60.],  // remove Molniyas at 63.4 degrees
+  },
+  {
+    name: 'GTO',
+    perigee: [0., 1000.],  // no partly to GTO
+    apogee: [16000., 70000.],  // subGTO (such as pslv, falcon)
+    inclination: [-60., 60.],  // remove Molniyas at 63.4 degrees
+  },
+  {
     name: 'Tundra',
     inclination: [63.0, 63.8],  // 63.4
     period: [1400., 1480.],  // minutes... 1436
@@ -89,6 +101,12 @@ function classifyOrbit(sat, wanted) {
       continue;
 
     if ('altitude' in o && !checkAltitude(o.altitude, sat)) {
+      continue;
+    }
+    if ('perigee' in o && !checkValue(o.perigee, sat.perigee)) {
+      continue;
+    }
+    if ('apogee' in o && !checkValue(o.apogee, sat.apogee)) {
       continue;
     }
     if ('inclination' in o && !checkValue(o.inclination, sat.inclination * R2D)) {
