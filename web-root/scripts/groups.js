@@ -253,10 +253,16 @@
       groups.GSO = new SatGroup();
       groups.GSOinclined = new SatGroup();
       groups.GSOgraveyard = new SatGroup();
+      groups.Molniya = new SatGroup();
+      groups.QuasiZenith = new SatGroup();
+      groups.SSOish = new SatGroup();
     } else {
       groups.GSO = new SatGroup('orbitType', 'GSO');
       groups.GSOinclined = new SatGroup('orbitType', 'GSO inclined');
       groups.GSOgraveyard = new SatGroup('orbitType', 'GSO graveyard');
+      groups.Molniya = new SatGroup('orbitType', 'Molniya');
+      groups.QuasiZenith = new SatGroup('orbitType', 'Quasi-Zenith');
+      groups.SSOish = new SatGroup('orbitType', 'SSO-ish');
     }
   };
 
