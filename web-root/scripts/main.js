@@ -81,6 +81,9 @@ $(document).ready(function() {
   };
   var target = document.getElementById('spinner');
   spinner = new Spinner(opts).spin(target);
+  //attemptFullscreen();
+  horizontalPhoneInit();
+
   setLoaderText('Downloading resources...');
 
   $('#search-results').perfectScrollbar();
@@ -119,7 +122,7 @@ $(document).ready(function() {
     for(var i=0; i < params.length; i++){
       hash[params[i].split('=')[0]] = params[i].split('=')[1];
     }
-    if ('search' in hash) {
+    if ('search' in hash) {  // needs to be before intldes because search clears selected sat
       val = hash['search'];
       console.log('preloading search to ' + val);
       searchBox.doSearch(val);
@@ -660,5 +663,64 @@ function updateUrl() {
 }
 
 function setLoaderText(loaderText) {
+  existing = $('#loader-text').text();
+  if ( existing.startsWith('Please ') ) {
+    return;
+  }
   $('#loader-text').text(loaderText);
 }
+
+function isHorizontalPhone() {
+  var width = $(document).width();
+  var height = $(document).height();
+
+  // alert('screen is w='+width+', h='+height);
+  // iphone 8 sees w=320 h=445 for actual of 750x1334
+
+  if (width < height && width < 500) {
+    return true;
+  }
+}
+
+function horizontalPhoneInit() {
+  if (isHorizontalPhone()) {
+    if ('orientation' in screen) {
+      try {
+        // caniuse: Chrome 67+; Android Browser 76+,Chrome 79+; Edge 79+
+        // this is an async function and we aren't calling it that way
+        screen.orientation.lock('landscape');
+      } catch (err) {
+        // FF desktop: NotSupportedError: Operation is not supported
+        console.error(err);
+      }
+      if (isHorizontalPhone()) {
+        alert('Please rotate your phone to be wide');
+      }
+    } else {
+      alert('Please rotate your phone to be wide');
+      if (isHorizontalPhone()) {
+        //var width = $(document).width();
+        //var height = $(document).height();
+        //alert('screen is w='+width+', h='+height);
+        //I reliably always get this alert twice even if I move my phone
+        //alert('Really, please rotate your phone to be wide');
+      }
+    }
+  }
+}
+
+/*
+function attemptFullscreen() {
+  if (document.fullscreenElement)
+    return;
+  try {
+    // this is an async function and has limitations for when it can be called
+    // we aren't obeying that limitation
+    // https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullScreen
+    document.documentElement.requestFullscreen();
+  } catch (err) {
+    // FF desktop: TypeError: Fullscreen request denied
+    console.error(err);
+  }
+}
+*/
