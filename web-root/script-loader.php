@@ -15,6 +15,7 @@ $scriptFiles = [
 'groups.js',
 'search-box.js',
 'orbit-display.js',
+'orbit-classifier.js',
 'line.js',
 'earth.js',
 'sun.js',

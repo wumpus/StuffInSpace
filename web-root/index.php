@@ -179,6 +179,10 @@ header('Content-Type: text/html; charset=utf-8');
         <div class="sat-info-key">Period</div>
         <div class="sat-info-value" id="sat-period">100  min</div>
       </div>
+      <div class="sat-info-row">
+        <div class="sat-info-key">Orbit Type</div>
+        <div class="sat-info-value" id="sat-orbit"></div>
+      </div>
     </div>
     <div id="zoom-controls">
       <div id="zoom-in" class="zoom-button">+</div>
