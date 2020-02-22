@@ -210,14 +210,17 @@ $(document).ready(function() {
     
     $('#canvas').mouseup(function(evt){
    //   if(evt.which === 3) {//RMB
-		if(!dragHasMoved) {
-		  var clickedSat = getSatIdFromCoord(evt.clientX, evt.clientY);
-      if(clickedSat === -1) searchBox.hideResults();
-		  selectSat(clickedSat);
-	    }
-		dragHasMoved = false;
-        isDragging = false;
-        initialRotation = false;
+      if(!dragHasMoved) {
+        var clickedSat = getSatIdFromCoord(evt.clientX, evt.clientY);
+        if (clickedSat === -1) {
+          searchBox.hideResults();
+	  // consider zooming out XXX
+        }
+        selectSat(clickedSat);
+      }
+      dragHasMoved = false;
+      isDragging = false;
+      initialRotation = false;
   //    }
     });
 	
@@ -261,7 +264,7 @@ function selectSat(satId) {
   selectedSat = satId;
   if(satId === -1) {
     $('#sat-infobox').fadeOut();
-     orbitDisplay.clearSelectOrbit();
+    orbitDisplay.clearSelectOrbit();
   } else {
     camZoomSnappedOnSat = true;
     camAngleSnappedOnSat = true;
@@ -699,6 +702,7 @@ function horizontalPhoneInit() {
     } else {
       alert('Please rotate your phone to be wide');
       if (isHorizontalPhone()) {
+        //webGlInit();  // in case the user rotated the phone // doesn't help
         //var width = $(document).width();
         //var height = $(document).height();
         //alert('screen is w='+width+', h='+height);

@@ -186,7 +186,7 @@
       var intldes = satSet.getSat(selectedSat).intlDes;
       var searchStr = intldes.slice(0,8);
       var saved_selectedSat = selectedSat;
-      searchBox.doSearch(searchStr); // clears selectedSat and fades out infobox
+      searchBox.doSearch(searchStr); // clears selectedSat and fades out infobox, which we really don't want
       selectSat(saved_selectedSat);
       // currently this click seems to always happen twice in a row?
       // you can see the infobox fade out and appear twice
