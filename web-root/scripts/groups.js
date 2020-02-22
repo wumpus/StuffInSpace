@@ -283,6 +283,8 @@
       if (mouseover_innerHTML.includes(' (0)')) { // group was empty in a previous call
         mouseover_innerHTML = mouseover_innerHTML.replace(' (0)', '');
       }
+      if (mouseover_innerHTML.includes('('))
+        return;
       itm.innerHTML = mouseover_innerHTML + ' (' + group_length + ')';
     });
   };
