@@ -123,17 +123,17 @@
           groups.clearSelect();
         }
       }
+      return false;
     });
     
 		$('#groups-display>li').mouseover(function() {
 
       var groupName = $(this).data('group');
-      if ("maxTouchPoints" in navigator && navigator.maxTouchPoints > 0) { // recommended by Mozilla
-        // note Microsfoft calls this msMaxTouchPoints for Win 8/IE 10. but these laptops have both a mouse and a touchscreen.
+      if ("maxTouchPoints" in navigator && navigator.maxTouchPoints > 0) {
+        // note Microsoft calls this msMaxTouchPoints for Win 8/IE 10. but these laptops have both a mouse and a touchscreen.
 	if (groupName != '<divider>') {
-          // treat touch mouseover as a click, fixing double click problem
+          // if a touchscreen, treat touch mouseover as a click, fixing double click problem
           $(this).click();
-	  // stop propagation? e.stopImmediatePropagation();
           return false;
         }
       }
@@ -147,12 +147,13 @@
       } else {
        groups.selectGroup(groups[groupName]);
       }
+      return false;
 		});
     
     $('#groups-display>li').click(function() {
       var groupName = $(this).data('group');
       if(groupName === '<divider>') {
-        ;
+        return false;
       } else if(groupName === '<clear>') {
         groups.clearSelect();
         groups.clearSelectMenu();
@@ -170,6 +171,7 @@
       $('#groups-display').css({
         display: 'none'
       });
+      return false;  // sometimes we are on top of the search-results box
     });
 	
 	  groups.GPSGroup = new SatGroup('intlDes', [
