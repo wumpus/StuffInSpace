@@ -62,6 +62,8 @@ var debugLine, debugLine2, debugLine3;
 var spinner;
 $(document).ready(function() {
 
+  //horizontalPhoneInit();
+  //attemptFullscreen();
   temporaryPhoneHack();
 
   var opts = {
@@ -84,8 +86,6 @@ $(document).ready(function() {
   };
   var target = document.getElementById('spinner');
   spinner = new Spinner(opts).spin(target);
-  //attemptFullscreen();
-  horizontalPhoneInit();
 
   setLoaderText('Downloading resources...');
 
