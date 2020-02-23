@@ -125,7 +125,7 @@
         html += '</span>';
         html += sat.OBJECT_NAME.substring(results[i].strIndex + searchStr.length);
       }
-      html += '<div class="search-result-intldes">';
+      html += '&nbsp;<div class="search-result-intldes">';
       if(results[i].isIntlDes) {
         html += sat.intlDes.substring(0, results[i].strIndex);
         html += '<span class="search-hilight">';
