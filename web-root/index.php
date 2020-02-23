@@ -10,7 +10,7 @@ header('Content-Type: text/html; charset=utf-8');
     <link rel="stylesheet" href="/perfect-scrollbar.min.css" type="text/css">
     <link rel="stylesheet" href="/style.css" type="text/css">
     
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="/scripts/satellite.min.js"></script>
     <script src="/script-loader.php"></script>
     
