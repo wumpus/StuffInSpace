@@ -241,8 +241,6 @@ ul {
   height: 30px;
 }
 
-
-
 .submenu {
   display: none;
   background: black;
@@ -304,7 +302,7 @@ ul {
   line-height: 35px;
   text-align: center;
   cursor: pointer;
-  
+
   -moz-user-select: -moz-none;
   -khtml-user-select: none;
   -webkit-user-select: none;
@@ -325,7 +323,7 @@ ul {
 }
 
 #zoom-out {
- 
+
 }
 
 #about-box {

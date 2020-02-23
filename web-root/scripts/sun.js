@@ -3,12 +3,12 @@ var D2R = Math.PI / 180.0;
 
 function currentDirection() {
   var now = new Date();
-  var j = 	jday(now.getUTCFullYear(), 
-             now.getUTCMonth() + 1, // Note, this function requires months in range 1-12. 
-             now.getUTCDate(),
-             now.getUTCHours(), 
-             now.getUTCMinutes(), 
-             now.getUTCSeconds());
+  var j = jday(now.getUTCFullYear(), 
+               now.getUTCMonth() + 1, // Note, this function requires months in range 1-12. 
+               now.getUTCDate(),
+               now.getUTCHours(), 
+               now.getUTCMinutes(), 
+               now.getUTCSeconds());
   j += now.getUTCMilliseconds() * 1.15741e-8; //days per millisecond   
   
   return getDirection(j);
@@ -29,7 +29,7 @@ function getDirection(jd) {
   var z = Math.sin(ob * D2R) * Math.sin(ecLon * D2R);
   
   return [x, y, z];
- //return [1, 0, 0];
+  //return [1, 0, 0];
 }
 
 function getObliquity(jd) {

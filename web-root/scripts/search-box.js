@@ -22,7 +22,7 @@
   };
 
   searchBox.getCurrentSearch = function() {
-    if(resultsOpen) {
+    if (resultsOpen) {
       return $('#search').val();
     } else {
       return null;
@@ -41,7 +41,7 @@
   searchBox.getHoverSat = function() {
     return hoverSatId;
   };
-  
+
   searchBox.hideResults = function() {
     var sr = $('#search-results');
     sr.slideUp();
@@ -55,7 +55,7 @@
 
     $('#search').val(str);  // in case the search was not fired by user input
 
-    if(str.length === 0) {
+    if (str.length === 0) {
       searchBox.hideResults();
       lastResultGroup = null;
       updateUrl();
@@ -67,33 +67,33 @@
     str = str.toUpperCase();
 
     var results = [];
-    for(var i=0; i < satData.length; i++) {
-      if(satData[i].OBJECT_NAME.indexOf(str) !== -1) {
+    for (var i=0; i < satData.length; i++) {
+      if (satData[i].OBJECT_NAME.indexOf(str) !== -1) {
         results.push({
-          isIntlDes : false, 
+          isIntlDes : false,
           strIndex : satData[i].OBJECT_NAME.indexOf(str),
           satId : i
         });
       }
-      
-      if(satData[i].intlDes.indexOf(str) !== -1) {
+
+      if (satData[i].intlDes.indexOf(str) !== -1) {
         results.push({
-          isIntlDes : true, 
+          isIntlDes : true,
           strIndex : satData[i].intlDes.indexOf(str),
           satId : i
         });
       }
-      
     }
+
     var resultCount = results.length;
 
-    if(results.length > SEARCH_LIMIT) {
+    if (results.length > SEARCH_LIMIT) {
       results.length = SEARCH_LIMIT;
     }
 
     //make a group to hilight results
     var idList = [];
-    for(var i=0; i<results.length; i++) {
+    for (var i=0; i<results.length; i++) {
       idList.push(results[i].satId);
     }
     var dispGroup = new groups.SatGroup('idList', idList);
@@ -107,16 +107,16 @@
 
   searchBox.fillResultBox = function (results, searchStr) {
     // results:
-    // [ 
+    // [
     //   { sat: { id: <id>, } }
     // ]
 
     var resultBox = $('#search-results');
     var html = '';
-    for(var i=0; i < results.length; i++) {
+    for (var i=0; i < results.length; i++) {
       var sat = satData[results[i].satId];
       html += '<div class="search-result" data-sat-id="' + sat.id + '">';
-      if(results[i].isIntlDes) {
+      if (results[i].isIntlDes) {
         html += sat.OBJECT_NAME;
       } else {
         html += sat.OBJECT_NAME.substring(0, results[i].strIndex);
@@ -126,7 +126,7 @@
         html += sat.OBJECT_NAME.substring(results[i].strIndex + searchStr.length);
       }
       html += '&nbsp;<div class="search-result-intldes">';
-      if(results[i].isIntlDes) {
+      if (results[i].isIntlDes) {
         html += sat.intlDes.substring(0, results[i].strIndex);
         html += '<span class="search-hilight">';
         html += sat.intlDes.substring(results[i].strIndex, results[i].strIndex + searchStr.length);
@@ -137,13 +137,13 @@
       }
       html += '</div></div>';
     }
-            var resultStart = performance.now();
+    var resultStart = performance.now();
     //  resultBox.append(html);
     resultBox[0].innerHTML = html;
     resultBox.slideDown();
     resultsOpen = true;
   };
-  
+
   searchBox.init = function(_satData) {
     satData = _satData;
     $('#search-results').on('click', '.search-result', function(evt) {
@@ -165,18 +165,18 @@
       hoverSatId = satId;
     });
 
-   $('#search-results').mouseout(function() {
+    $('#search-results').mouseout(function() {
       orbitDisplay.clearHoverOrbit();
       satSet.setHover(-1);
-  //    hoverBoxOnSat(-1);
+      //hoverBoxOnSat(-1);
       hovering = false;
-    }); 
-    
-    $('#search').on('input', function() {
-        var initStart = performance.now();
-        var searchStr = $('#search').val()
+    });
 
-        searchBox.doSearch(searchStr);
+    $('#search').on('input', function() {
+      var initStart = performance.now();
+      var searchStr = $('#search').val()
+
+      searchBox.doSearch(searchStr);
     });
 
     $('#all-objects-link').click(function(ev) {
@@ -194,8 +194,6 @@
       ev.stopPropagation(); // does not help
     });
   };
-  
-  
-  
+
   window.searchBox = searchBox;
 })();

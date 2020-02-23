@@ -3,13 +3,13 @@
 /* global orbitDisplay */
 /* global satSet */
 (function() {
-	var groups = {};
-	groups.selectedGroup = null;
-	
-	function SatGroup(groupType, data) {
-		this.sats = [];
-    if(groupType === 'intlDes') {
-      for(var i=0; i < data.length; i++){
+  var groups = {};
+  groups.selectedGroup = null;
+
+  function SatGroup(groupType, data) {
+    this.sats = [];
+    if (groupType === 'intlDes') {
+      for (var i=0; i < data.length; i++) {
         this.sats.push({
           satId : satSet.getIdFromIntlDes(data[i]),
           isIntlDes : true,
@@ -18,49 +18,50 @@
       }
     } else if (groupType === 'nameRegex') {
       var satIdList = satSet.searchNameRegex(data);
-      for(var i=0; i < satIdList.length; i++) {
+      for (var i=0; i < satIdList.length; i++) {
         this.sats.push({
           satId : satIdList[i],
           isIntlDes : false,
           strIndex : 0,
         });
-      } 
+      }
     } else if (groupType === 'idList') {
-      for(var i=0; i < data.length; i++) {
+      for (var i=0; i < data.length; i++) {
         this.sats.push({
           satId : data[i],
           isIntlDes : false,
           strIndex : 0
         });
-      } 
+      }
     } else if (groupType === 'orbitType') {
       var satIdList = satSet.searchOrbitType(data);
-      for(var i=0; i < satIdList.length; i++) {
+      for (var i=0; i < satIdList.length; i++) {
         this.sats.push({
           satId : satIdList[i],
           isIntlDes : false,
           strIndex : 0,
         });
-      } 
+      }
     }
-	}
-	
-	SatGroup.prototype.hasSat = function(id) {
-		var len = this.sats.length;
-		for(var i=0; i < len; i++) {
-			if(this.sats[i].satId === id) return true;
-		}
-		return false;
-	};
-  
+  }
+
+  SatGroup.prototype.hasSat = function(id) {
+    var len = this.sats.length;
+    for (var i=0; i < len; i++) {
+      if (this.sats[i].satId === id)
+        return true;
+    }
+    return false;
+  };
+
   SatGroup.prototype.updateOrbits = function() {
-    for(var i=0; i < this.sats.length; i++) {
+    for (var i=0; i < this.sats.length; i++) {
       orbitDisplay.updateOrbitBuffer(this.sats[i].satId);
     }
   };
-  
+
   SatGroup.prototype.forEach = function(callback) {
-    for(var i=0; i<this.sats.length; i++) {
+    for (var i=0; i<this.sats.length; i++) {
       callback(this.sats[i].satId);
     }
   };
@@ -69,18 +70,17 @@
     return this.sats.length;
   };
 
-
   groups.SatGroup = SatGroup;
-  
+
   groups.selectGroup = function(group) {
     var start = performance.now();
-		groups.selectedGroup = group;
+    groups.selectedGroup = group;
     group.updateOrbits();
     satSet.setColorScheme(ColorScheme.group);
     var t = performance.now() - start;
    // console.log('selectGroup: ' + t + ' ms');
-	};
-  
+  };
+
   groups.setSelectMenu = function(str) {
     if ( str ) {
       $('#menu-groups .menu-title').text('Group: ' + str);
@@ -107,31 +107,31 @@
     groups.selectedGroup = null;
     satSet.setColorScheme(ColorScheme.default);
   };
-	
-	groups.init = function() {
+
+  groups.init = function() {
     var start = performance.now();
-    
+
     var clicked = false;
     $('#groups-display').mouseout(function() {
-      if(!clicked) {
-        if(searchBox.isResultBoxOpen()) {
+      if (!clicked) {
+        if (searchBox.isResultBoxOpen()) {
           lrg = searchBox.getLastResultGroup();
-	  if ( lrg != null ) {
+          if ( lrg != null ) {
             groups.selectGroup(lrg);
           }
         } else {
           groups.clearSelect();
         }
       }
-      return false;
+      // return false;
     });
-    
-		$('#groups-display>li').mouseover(function() {
 
+    $('#groups-display>li').mouseover(function() {
       var groupName = $(this).data('group');
+
       if ("maxTouchPoints" in navigator && navigator.maxTouchPoints > 0) {
         // note Microsoft calls this msMaxTouchPoints for Win 8/IE 10. but these laptops have both a mouse and a touchscreen.
-	if (groupName != '<divider>') {
+        if (groupName != '<divider>') {
           // if a touchscreen, treat touch mouseover as a click, fixing double click problem
           $(this).click();
           return false;
@@ -140,26 +140,26 @@
 
       clicked = false;
       var groupName = $(this).data('group');
-      if(groupName === '<divider>') {
+      if (groupName === '<divider>') {
         ;
-      } else if(groupName === '<clear>') {
+      } else if (groupName === '<clear>') {
         ;
       } else {
        groups.selectGroup(groups[groupName]);
       }
-      return false;
-		});
-    
+      // return false; // doing this breaks the groups menu
+    });
+
     $('#groups-display>li').click(function() {
       var groupName = $(this).data('group');
-      if(groupName === '<divider>') {
-        return false;
-      } else if(groupName === '<clear>') {
+      if (groupName === '<divider>') {
+        // return false;
+      } else if (groupName === '<clear>') {
         groups.clearSelect();
         groups.clearSelectMenu();
       } else {
         // if I click the group I'm already viewing, should nothing happen? XXX
-        // ok, side-effect, should clear the search even if I click on the same group 
+        // ok, side-effect, should clear the search even if I click on the same group
         clicked = true;
         selectSat(-1);
         searchBox.clearSearchBox();
@@ -168,14 +168,15 @@
         searchBox.setLastResultGroup(groups[groupName]);
         groups.setSelectMenu($(this).text())
       }
+      console.log('closing groups-display due to groups-display>li click');
       $('#groups-display').css({
         display: 'none'
       });
-      return false;  // sometimes we are on top of the search-results box
+      // return false;  // sometimes we are on top of the search-results box
     });
-	
-	  groups.GPSGroup = new SatGroup('intlDes', [
-  		'90103A',
+
+    groups.GPSGroup = new SatGroup('intlDes', [
+      '90103A',
       '93068A',
       '96041A',
       '97035A',
@@ -206,7 +207,7 @@
       '14045A',
       '14068A',
       '15013A'
-    ]);   
+    ]);
     groups.IridiumGroup = new SatGroup('nameRegex', /IRIDIUM(?!.*DEB)/);
     groups.Iridium33DebrisGroup = new SatGroup('nameRegex', /(COSMOS 2251|IRIDIUM 33) DEB/);
     groups.GlonassGroup = new SatGroup('nameRegex', /GLONASS/);
@@ -246,7 +247,7 @@
 
     groups.initDelayedGroups(false);
     groups.fixMenuCounts();
-    
+
     console.log('groups init: ' + (performance.now() - start) + ' ms');
   };
 
@@ -277,7 +278,7 @@
   };
 
   groups.fixMenuCounts = function() {
-    $('#groups-display').children('li').each(function(idx, itm) { 
+    $('#groups-display').children('li').each(function(idx, itm) {
       groupName = $(itm).data('group');
       if ( groupName.startsWith('<') ) {
         return;
@@ -292,9 +293,5 @@
       itm.innerHTML = mouseover_innerHTML + ' (' + group_length + ')';
     });
   };
-
-
-	window.groups = groups;
-	
-	
+  window.groups = groups;
 })();
