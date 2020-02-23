@@ -17,13 +17,13 @@ var orbits = [
   {
     name: 'GTO',
     perigee: [0., 9000.],  // include partly-to-gto (Centaur)
-    apogee: [34000., 70000.],  // supersync
+    apogee: [34000., 70000.],  // supersync but not subsync
     inclination: [-60., 60.],  // remove Molniyas at 63.4 degrees
   },
   {
     name: 'GTO',
     perigee: [0., 1000.],  // no partly to GTO
-    apogee: [16000., 70000.],  // subGTO (such as pslv, falcon)
+    apogee: [16000., 70000.],  // subGTO (such as pslv, falcon) and supersync
     inclination: [-60., 60.],  // remove Molniyas at 63.4 degrees
   },
   {
