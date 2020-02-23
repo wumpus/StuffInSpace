@@ -227,19 +227,19 @@
     //groups.ChinaASAT = new SatGroup('intlDes', '1999-025');  // cannot do this because really need a search
     groups.GNSS = new SatGroup('nameRegex', /(QZS-|IRNSS|NAVSTAR|BEIDOU|GLONASS)/);  // see also WAAS/EGNOS/MSAS celestrak: sbas.txt
 
-    groups.rocketbodies = new SatGroup('nameRegex', /R\/B/);
+    groups.rocketbodies = new SatGroup('nameRegex', /(R\/B|AKM|PKM)/);
 
-    groups.RUrocketbodies = new SatGroup('nameRegex', /(BREEZE-|FREGAT |BLOCK D|^SL-1|VOLGA).*R\/B/);
-    groups.USrocketbodies = new SatGroup('nameRegex', /((DELTA|ATLAS|TITAN|PEGASUS|USA|THOR|SCOUT|IABS|IUS|AGENA|MINOTAUR|TAURUS|VANGUARD|OV1).*R\/B|R\/B.*(STAR|PAM))/);
-    groups.EUrocketbodies = new SatGroup('nameRegex', /(ARIANE|DIAMANT|AVUM).*R\/B/);
-    groups.JProcketbodies = new SatGroup('nameRegex', /(H-1|H-2|EPSILON|^M-).*R\/B/);
-    groups.CNrocketbodies = new SatGroup('nameRegex', /(CZ-|YZ-).*R\/B/);
-    groups.INrocketbodies = new SatGroup('nameRegex', /(PSLV).*R\/B/); // no GSLV... the paper on GSLV-D5 says they use a really low perigee for GTO
-    groups.SpaceXrocketbodies = new SatGroup('nameRegex', /FALCON.*R\/B/);
-    groups.RocketLabrocketbodies = new SatGroup('nameRegex', /ELECTRON.*R\/B/);
-    groups.NKrocketbodies = new SatGroup('nameRegex', /(UNHA).*R\/B/);
-    groups.KRrocketbodies = new SatGroup('nameRegex', /KSLV.*R\/B/);
-    groups.UKrocketbodies = new SatGroup('nameRegex', /(BLACK ARROW).*R\/B/);
+    groups.RUrocketbodies = new SatGroup('nameRegex', /(BREEZE-|FREGAT |BLOCK D|^SL-1|VOLGA).*(R\/B|AKM|PKM)/);
+    groups.USrocketbodies = new SatGroup('nameRegex', /((DELTA|ATLAS|TITAN|PEGASUS|USA|THOR|SCOUT|IABS|IUS|AGENA|MINOTAUR|TAURUS|VANGUARD|OV1).*(R\/B|AKM|PKM)|(R\/B|AKM|PKM).*(STAR|PAM))/);
+    groups.EUrocketbodies = new SatGroup('nameRegex', /(ARIANE|DIAMANT|AVUM).*(R\/B|AKM|PKM)/);
+    groups.JProcketbodies = new SatGroup('nameRegex', /(H-1|H-2|EPSILON|^M-).*(R\/B|AKM|PKM)/);
+    groups.CNrocketbodies = new SatGroup('nameRegex', /(CZ-|YZ-).*(R\/B|AKM|PKM)/);
+    groups.INrocketbodies = new SatGroup('nameRegex', /(PSLV).*(R\/B|AKM|PKM)/); // no GSLV... the paper on GSLV-D5 says they use a really low perigee for GTO
+    groups.SpaceXrocketbodies = new SatGroup('nameRegex', /FALCON.*(R\/B|AKM|PKM)/);
+    groups.RocketLabrocketbodies = new SatGroup('nameRegex', /ELECTRON.*(R\/B|AKM|PKM)/);
+    groups.NKrocketbodies = new SatGroup('nameRegex', /(UNHA).*(R\/B|AKM|PKM)/);
+    groups.KRrocketbodies = new SatGroup('nameRegex', /KSLV.*(R\/B|AKM|PKM)/);
+    groups.UKrocketbodies = new SatGroup('nameRegex', /(BLACK ARROW).*(R\/B|AKM|PKM)/);
 
     groups.debris = new SatGroup('nameRegex', /\b(DEB|COOLANT)\b/);
     groups.SpaceXdebris = new SatGroup('nameRegex', /FALCON.*DEB/);
