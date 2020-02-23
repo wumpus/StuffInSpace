@@ -263,6 +263,9 @@ function temporaryPhoneHack() {
     var width = document.documentElement.clientWidth * window.devicePixelRatio;
     viewport = document.querySelector("meta[name=viewport]");
     viewport.setAttribute('content', 'width=' + width + ', minimum-scale: 1');
+
+    $('#zoom-controls').prop('id', 'zoom-controls-phone');
+    $('.zoom-button').removeClass('zoom-button').addClass('zoom-button-phone');
   }
 }
 

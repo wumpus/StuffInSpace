@@ -318,6 +318,41 @@ ul {
   background: #511;
 }
 
+#zoom-controls-phone {
+  position:absolute;
+  right: 40px;
+  bottom: 40px;
+  width: 80px;
+  height: 140px;
+  background: black;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.zoom-button-phone {
+  height: 70px;
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 70px;
+  text-align: center;
+  cursor: pointer;
+
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.zoom-button-phone:hover {
+  background: #c33;
+}
+
+.zoom-button-phone:active {
+  background: #511;
+}
+
 #zoom-in {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
