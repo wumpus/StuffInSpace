@@ -213,7 +213,7 @@
     groups.SpaceXGroup = new SatGroup('nameRegex', /FALCON [19]/);
     groups.RussianTugs = new SatGroup('nameRegex', /(BREEZE-|FREGAT |BLOCK D|^SL-1)/);
 
-    groups.Starlink = new SatGroup('nameRegex', /STARLINK/);
+    groups.Starlink = new SatGroup('nameRegex', /(STARLINK|TINTIN [AB])/);
     groups.OneWeb = new SatGroup('nameRegex', /ONEWEB/);
     groups.Globalstar = new SatGroup('nameRegex', /GLOBALSTAR/);
     groups.O3b = new SatGroup('nameRegex', /O3B /);
