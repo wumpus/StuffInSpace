@@ -61,6 +61,9 @@ var debugContext, debugImageData;
 var debugLine, debugLine2, debugLine3;
 var spinner;
 $(document).ready(function() {
+
+  temporaryPhoneHack();
+
   var opts = {
     lines: 11, // The number of lines to draw
     length: 8, // The length of each line
@@ -259,6 +262,16 @@ $(document).ready(function() {
  //   debugImageData = debugContext.createImageData(debugContext.canvas.width, debugContext.canvas.height);
   drawLoop(); //kick off the animationFrame()s
 });
+
+function temporaryPhoneHack() {
+  // set the phone to 1px == 1 physical pixel
+  // makes it hard to touch the controls, but it works better than 1px = 2+ physical pixels
+  if (window.devicePixelRatio > 1 && document.documentElement.clientWidth < 1000) {
+    var width = document.documentElement.clientWidth * window.devicePixelRatio;
+    viewport = document.querySelector("meta[name=viewport]");
+    viewport.setAttribute('content', 'width=' + width + ', minimum-scale: 1');
+  }
+}
 
 function selectSat(satId) {
   selectedSat = satId;
