@@ -233,7 +233,6 @@ $(document).ready(function() {
   });
 
   $('.menu-item').mouseout(function(evt) {
-   console.log('diappearing menu due to menu-item mouseout');
     $(this).children('.submenu').css({
       display: 'none'
     });

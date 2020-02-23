@@ -139,7 +139,6 @@
       }
 
       clicked = false;
-      var groupName = $(this).data('group');
       if (groupName === '<divider>') {
         ;
       } else if (groupName === '<clear>') {
@@ -152,6 +151,7 @@
 
     $('#groups-display>li').click(function() {
       var groupName = $(this).data('group');
+
       if (groupName === '<divider>') {
         // return false;
       } else if (groupName === '<clear>') {
