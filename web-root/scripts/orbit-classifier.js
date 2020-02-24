@@ -37,6 +37,14 @@ var orbits = [
     period: [700., 740.],  // minutes... 718
   },
   {
+    name: 'Frozen periapsis',
+    inclination: [63.0, 63.8],  // 63.4
+  },
+  {
+    name: 'Frozen eccentricity',
+    argPe: [89.0, 90.1, 179.0, 181.0],  // ... radians
+  },
+  {
     name: 'Quasi-Zenith',
     altitude: [30000., 40000.],
     inclination: [40.5, 43.5],
@@ -113,6 +121,9 @@ function classifyOrbit(sat, wanted) {
       continue;
     }
     if ('period' in o && !checkValue(o.period, sat.period)) {
+      continue;
+    }
+    if ('argPe' in o && !checkValue(o.argPe, sat.argPe * R2D)) {
       continue;
     }
     return o.name;

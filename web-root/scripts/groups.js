@@ -263,6 +263,8 @@
       groups.Cluster850 = new SatGroup();
       groups.Cluster975 = new SatGroup();
       groups.SSOish = new SatGroup();
+      groups.FrozenPeriapsis = new SatGroup();
+      groups.FrozenEccentricity = new SatGroup();
     } else {
       groups.GSO = new SatGroup('orbitType', 'GSO');
       groups.GSOinclined = new SatGroup('orbitType', 'GSO inclined');
@@ -274,6 +276,8 @@
       groups.Cluster850 = new SatGroup('orbitType', 'Cluster 850km');
       groups.Cluster975 = new SatGroup('orbitType', 'Cluster 975km');
       groups.SSOish = new SatGroup('orbitType', 'SSO-ish');
+      groups.FrozenPeriapsis = new SatGroup('orbitType', 'Frozen periapsis');
+      groups.FrozenEccentricity = new SatGroup('orbitType', 'Frozen eccentricity');
     }
   };
 
