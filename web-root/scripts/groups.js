@@ -265,6 +265,7 @@
       groups.SSOish = new SatGroup();
       groups.FrozenPeriapsis = new SatGroup();
       groups.FrozenEccentricity = new SatGroup();
+      groups.VeryLow = new SatGroup();
     } else {
       groups.GSO = new SatGroup('orbitType', 'GSO');
       groups.GSOinclined = new SatGroup('orbitType', 'GSO inclined');
@@ -278,6 +279,7 @@
       groups.SSOish = new SatGroup('orbitType', 'SSO-ish');
       groups.FrozenPeriapsis = new SatGroup('orbitType', 'Frozen periapsis');
       groups.FrozenEccentricity = new SatGroup('orbitType', 'Frozen eccentricity');
+      groups.VeryLow = new SatGroup('orbitType', 'Very low');
     }
   };
 

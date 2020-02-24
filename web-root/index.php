@@ -54,8 +54,9 @@ header('Content-Type: text/html; charset=utf-8');
           <li data-group="Molniya">Molniya</li>
           <li data-group="QuasiZenith">Quasi-Zenith</li>
 	  <li data-group="SSOish">SSO-ish</li>
-	  <li data-group="FrozenPeriapsis">Frozen Periapsis</li>
+	  <li data-group="FrozenPeriapsis">Frozen periapsis</li>
 	  <li data-group="FrozenEccentricity">Frozen eccentricity</li>
+	  <li data-group="VeryLow">Very low</li>
 <!--
 	  <li data-group="Cluster775">Cluster at 775km</li>
 	  <li data-group="Cluster850">Cluster at 850km</li>

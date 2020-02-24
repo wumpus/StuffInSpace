@@ -33,16 +33,8 @@ var orbits = [
   },
   {
     name: 'Molniya',
-    inclination: [63.0, 63.8],  // 63.4
+    inclination: [62.5, 64.3],  // 63.4
     period: [700., 740.],  // minutes... 718
-  },
-  {
-    name: 'Frozen periapsis',
-    inclination: [63.0, 63.8],  // 63.4
-  },
-  {
-    name: 'Frozen eccentricity',
-    argPe: [89.0, 90.1, 179.0, 181.0],  // ... radians
   },
   {
     name: 'Quasi-Zenith',
@@ -53,6 +45,14 @@ var orbits = [
     name: 'SSO-ish',
     altitude: [240., 1289.],  // 282 ... 1269
     inclination: [94.6, 102.7],  // 96.6 ... 100.7
+  },
+  {
+    name: 'Frozen periapsis',
+    inclination: [62.5, 64.3],  // 63.4
+  },
+  {
+    name: 'Frozen eccentricity',
+    argPe: [89.0, 91.0, 179.0, 181.0],  // ... radians
   },
   // https://amostech.com/TechnicalPapers/2019/Orbital-Debris/McKnight.pdf
   {
@@ -73,6 +73,10 @@ var orbits = [
     //inclination: [0., 0.],  // looks all polar
     // example object: Cosmos 755, a Parus
     // https://en.wikipedia.org/wiki/Parus_(satellite) -- 99 launched ... 825kg ... 1975-2009?
+  },
+  {
+    name: 'Very low',
+    perigee: [0., 150.],
   },
   {
     name: '',
