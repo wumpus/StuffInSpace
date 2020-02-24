@@ -154,7 +154,7 @@ ul {
 #search-results {
   display: none;
   position: absolute;
-  //width: 300px; // shrink to minimum
+  /* width: 300px; shrink to minimum */
   background: black;
   color: white;
   border-radius: 5px;
@@ -186,7 +186,7 @@ ul {
   font-size: 12px;
   height: 28px;
   float: right;
-  margin-right: 10  px;
+  margin-right: 10px;
 }
 
 #search {
@@ -383,7 +383,7 @@ ul {
   height: 25px;
   line-height: 25px;
   margin-top: 5px;
-  magin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .dot {
