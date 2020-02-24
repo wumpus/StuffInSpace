@@ -64,9 +64,10 @@ function propagate() {
 
   for (var i=0; i < satCache.length; i++) {
     var m = (j - satCache[i].jdsatepoch) * 1440.0; //1440 = minutes_per_day
-    var pv = satellite.sgp4(satCache[i], m);
     var x,y,z,vx,vy,vz,alt;
+    var problem = false;
     try {
+      var pv = satellite.sgp4(satCache[i], m);
       x = pv.position.x; // translation of axes from earth-centered inertial
       y = pv.position.y; // to OpenGL is done in shader with projection matrix
       z = pv.position.z; // so we don't have to worry about it
@@ -75,6 +76,16 @@ function propagate() {
       vz = pv.velocity.z;
       alt = satellite.eci_to_geodetic(pv.position, gmst).height;
     } catch(e) {
+      problem = true;
+      if (e.name != 'TypeError') {
+        console.error('caught crash in sat-cruncher sgp4', e);
+      }
+    }
+
+    if (problem || isNaN(alt) || alt < 0.) {
+      //console.error('problem with this satellite', i, x, y, z, vx, vy, vz, alt);
+      //observed: satellites go below 0. altitude and then get all undef plus alt=NaN
+      //in the orbit-display the line disappears, here we set zeros to fix the sat-infobox
       x = 0;
       y = 0;
       z = 0;
@@ -83,7 +94,8 @@ function propagate() {
       vz = 0;
       alt = 0;
     }
-  //    console.log('x: ' + x + ' y: ' + y + ' z: ' + z);
+
+    // console.log('x: ' + x + ' y: ' + y + ' z: ' + z);
     satPos[i*3] = x;
     satPos[i*3+1] = y;
     satPos[i*3+2] = z;

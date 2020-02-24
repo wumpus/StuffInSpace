@@ -37,15 +37,18 @@ onmessage = function(m) {
 
     for (var i=0; i<NUM_SEGS+1; i++) {
       var t = now + i*timeslice;
-      var p = satellite.sgp4(satCache[satId], t).position;
       try {
+        var p = satellite.sgp4(satCache[satId], t).position;
         pointsOut[i*3] = p.x;
         pointsOut[i*3+1] = p.y;
         pointsOut[i*3+2] = p.z;
-      } catch (ex) {
+      } catch (e) {
         pointsOut[i*3] = 0;
         pointsOut[i*3+1] = 0;
         pointsOut[i*3+2] = 0;
+        if (e.name != 'TypeError') {
+          console.error('caught crash in orbit-calculation-worker sgp4', e);
+        }
       }
     }
     postMessage({
