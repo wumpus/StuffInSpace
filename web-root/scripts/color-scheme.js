@@ -24,8 +24,8 @@
     gl.bindBuffer(gl.ARRAY_BUFFER, this.pickableBuf);
     gl.bufferData(gl.ARRAY_BUFFER, pickableData, gl.STATIC_DRAW);
     return {
-      colorBuf : this.colorBuf,
-      pickableBuf : this.pickableBuf
+      colorBuf: this.colorBuf,
+      pickableBuf: this.pickableBuf
     };
   };
 
@@ -33,19 +33,10 @@
     ColorScheme.default = new ColorScheme(function(satId) {
       var sat = satSet.getSat(satId);
       var color;
-      if (sat.OBJECT_TYPE === 'PAYLOAD') {
-        color = [1.0, 0.2, 0.0, 1.0];  // red
-      } else if (sat.OBJECT_TYPE === 'ROCKET BODY') {
-        color = [0.2, 0.5, 1.0, 0.85]; // blue
-      // return [0.6, 0.6, 0.6];
-      } else if (sat.OBJECT_TYPE === 'DEBRIS') {
-        color = [0.5, 0.5, 0.5, 0.85]; // gray
-      } else {
-        color = [1.0, 1.0, 0.0, 1.0];
-      }
+      color = colorByType(sat.OBJECT_TYPE);
       return {
-        color : color,
-        pickable : true
+        color: color,
+        pickable: true
       };
     });
 
@@ -53,8 +44,8 @@
       var ap = satSet.getSat(satId).apogee;
       var gradientAmt = Math.min(ap / 45000, 1.0);
       return {
-        color : [1.0 - gradientAmt, gradientAmt, 0.0, 1.0],
-        pickable : true
+        color: [1.0 - gradientAmt, gradientAmt, 0.0, 1.0],
+        pickable: true
       }
     });
 
@@ -62,21 +53,23 @@
       var vel = satSet.getSat(satId).velocity;
       var gradientAmt = Math.min(vel / 15, 1.0);
       return {
-        color : [1.0 - gradientAmt, gradientAmt, 0.0, 1.0],
-        pickable : true
+        color: [1.0 - gradientAmt, gradientAmt, 0.0, 1.0],
+        pickable: true
       };
     });
 
     ColorScheme.group = new ColorScheme(function(satId) {
       if (groups.selectedGroup.hasSat(satId)) {
+        var sat = satSet.getSat(satId);
         return {
-          color : [1.0, 0.2, 0.0, 1.0],
-          pickable : true
+          //color: [1.0, 0.2, 0.0, 1.0],
+          color: colorByType(sat.OBJECT_TYPE),
+          pickable: true
         };
       } else {
         return {
-          color : [1.0, 1.0, 1.0, 0.1],
-          pickable : false
+          color: [1.0, 1.0, 1.0, 0.1],
+          pickable: false
         };
       }
     });
@@ -85,6 +78,20 @@
 
     });
   };
+
+  function colorByType(type) {
+    if (type === 'PAYLOAD') {
+      color = [1.0, 0.2, 0.0, 1.0];  // red
+    } else if (type === 'ROCKET BODY') {
+      color = [0.2, 0.5, 1.0, 0.85]; // blue
+      // return [0.6, 0.6, 0.6];
+    } else if (type === 'DEBRIS') {
+      color = [0.5, 0.5, 0.5, 0.85]; // gray
+    } else {
+      color = [1.0, 1.0, 0.0, 1.0];
+    }
+    return color;
+  }
 
   window.ColorScheme = ColorScheme;
 })();
