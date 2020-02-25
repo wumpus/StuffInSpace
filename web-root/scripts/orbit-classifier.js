@@ -53,6 +53,7 @@ var orbits = [
   {
     name: 'Frozen eccentricity',
     argPe: [89.0, 91.0, 179.0, 181.0],  // ... radians
+    eccentricity: [0.1, 1.0], // get rid of orbits that aren't very eccentric
   },
   // https://amostech.com/TechnicalPapers/2019/Orbital-Debris/McKnight.pdf
   {
@@ -128,6 +129,9 @@ function classifyOrbit(sat, wanted) {
       continue;
     }
     if ('argPe' in o && !checkValue(o.argPe, sat.argPe * R2D)) {
+      continue;
+    }
+    if ('eccentricity' in o && !checkValue(o.eccentricity, sat.eccentricity)) {
       continue;
     }
     return o.name;
