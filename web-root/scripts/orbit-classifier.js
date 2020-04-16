@@ -28,12 +28,12 @@ var orbits = [
   },
   {
     name: 'Tundra',
-    inclination: [63.0, 63.8],  // 63.4
+    inclination: [62.0, 64.8],  // 63.4
     period: [1400., 1480.],  // minutes... 1436
   },
   {
     name: 'Molniya',
-    inclination: [62.5, 64.3],  // 63.4
+    inclination: [62.0, 64.8],  // 63.4
     period: [700., 740.],  // minutes... 718
   },
   {
